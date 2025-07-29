@@ -1,0 +1,72 @@
+//create the project folder
+
+// create a new virtual environment(venv) e.g called myenv using next line
+	python -m venv myenv
+
+
+
+//to activate a virtual environment use next line
+	. env\scripts\activate
+
+
+
+// to install django inside the project folder
+	pip install django
+
+
+//to create a django project folder(root folder) called myproject1 use next line
+	djano-admin startproject myproject1 . 
+
+
+// Create new app folder inside the project folder not inside the django folder called myapp use next line
+	python manage.py startapp myapp
+
+// the next thing is to add the created app or apps inside the django project folder(root folder) in the installed apps section using next line
+	'myapp',
+
+// now we create a url.py file inside the app folder and paste the next line.....
+			from django.urls import path
+			from . import views
+
+			urlpatterns = [
+				path('', views.home, name="home"),
+				path('about/', views.about, name="about"),
+				path('contact/', views.contact , name="Conatact Us"),
+
+			]
+
+//
+
+
+
+
+
+
+
+//to run the backend on a local server use next line
+	python manage.py runserver
+
+	model.py is used to create everything you want to store all want we want to app to contain 
+
+// to migrate use this 
+   python manage.py makemigrations
+   then press: python  manage.py migrate
+
+// to cretae superuser use this
+  python manage.py createsuperuser
+
+// to link with admin panel 
+then import the model one after the other 
+
+// to register the modelunder the admin.py use this
+    admin.site.register(Post)
+
+// for django to communicate with html use this 
+    {% %}
+
+// install pillow using this this pillow allows the user to upload there own personal images on the page 
+	pip install pillow
+NOTE: Before any installation make sure ur virtual environment is activated
+
+how to maka the image added on admin to shw 
+   

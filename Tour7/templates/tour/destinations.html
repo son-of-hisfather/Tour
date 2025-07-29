@@ -1,0 +1,94 @@
+{% extends "tour/base.html" %}
+{% load static %}
+
+{% block content %} 
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url("{% static 'assets/img/travel/showcase-8.webp' %}");">
+      <div class="container position-relative">
+        <h1>Destinations</h1>
+        <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="current">Destinations</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Travel Destinations Section -->
+    <section id="travel-destinations" class="travel-destinations section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2>Uncover Captivating Travel Experiences</h2>
+            <p class="mb-5">From the bustling energy of cosmopolitan cities to the serene embrace of untouched wilderness, embark on incredible journeys to the planet's most enchanting destinations. We're here to help you craft memories that will last a lifetime.</p>
+          </div>
+        </div>
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+          <ul class="destination-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
+            <li data-filter="*" class="filter-active">All Locales</li>
+            {% comment %} <li data-filter=".filter-tropical">Tropical</li>
+            <li data-filter=".filter-mountain">Alpine</li> {% endcomment %}
+            <li data-filter=".filter-urban">Cityscapes</li>
+            <li data-filter=".filter-historical">Heritage</li>
+            <li data-filter=".filter-coastal">Seaside</li>
+          </ul><!-- End Destination Filters --> 
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
+            {% for destination in destinations %}
+
+            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-{{ destination.category|lower }}">
+              <a href="{% url 'destination_details' %}" class="destination-tile">
+                <div class="tile-image">
+                  {% if destination.image %}
+                    <img src="{{ destination.image.url }}" alt="Maldives" class="img-fluid" loading="lazy">
+                  {% endif %}
+                  <div class="overlay-content">
+                    <span class="destination-tag luxury">{{destination.name}}</span>
+                    <div class="destination-info">
+                      <h4>{{destination.title}}</h4>
+                      <p>{{destination.content|truncatewords:20}}</p>
+                      <div class="destination-stats">
+                        <span class="tours-available"><i class="bi bi-map"></i>{{destination.tours_available}}</span>
+                        <span class="starting-price">${{destination.starting_price}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div><!-- End Destination Item -->
+
+           
+            {% endfor %}
+          </div><!-- End Destinations Container -->
+
+        {% comment %} </div> {% endcomment %}
+
+        <div class="row mt-5">
+          <div class="col-lg-10 mx-auto text-center" data-aos="fade-up" data-aos-delay="400">
+            <div class="planning-assistance">
+              <div class="assistance-content">
+                <h3>Let Our Team Help Curate Your Perfect Expedition</h3>
+                <p>Unsure which destination aligns with your travel aspirations? Our seasoned travel advisors are poised to design a bespoke itinerary tailored just for you.</p>
+                <div class="assistance-actions">
+                  <a href="{% url 'contact' %}" class="btn btn-primary">Receive Complimentary Consultation</a>
+                  <a href="{% url 'tours' %}" class="btn btn-outline">Explore All Available Tours</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Travel Destinations Section -->
+
+  </main>
+{% endblock %}
