@@ -45,10 +45,10 @@
             {% for destination in destinations %}
 
             <div class="col-lg-4 col-md-6 destination-item isotope-item filter-{{ destination.category|lower }}">
-              <a href="{% url 'destination_details' %}" class="destination-tile">
+              <a href="{% url 'destination_details' destination.pk %}" class="destination-tile">
                 <div class="tile-image">
                   {% if destination.image %}
-                    <img src="{{ destination.image.url }}" alt="Maldives" class="img-fluid" loading="lazy">
+                    <img src="{{ destination.image.url }}" alt="{{destination.name}}" class="img-fluid" loading="lazy">
                   {% endif %}
                   <div class="overlay-content">
                     <span class="destination-tag luxury">{{destination.name}}</span>

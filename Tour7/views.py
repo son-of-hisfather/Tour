@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Destination
 
 # Create your views here.
@@ -23,8 +23,9 @@ def tours(request):
 def gallery(request):
     return render(request, 'tour/gallery.html')
 
-def destination_details(request):
-    return render(request, 'tour/destination-details.html')
+def destination_details(request, pk):
+    destination = get_object_or_404(Destination, pk=pk)
+    return render(request, 'tour/destination-details.html',{'destination': destination})
 
 # def category_list(request):
 #     categories = Category.objects.all()  # fetch all category objects

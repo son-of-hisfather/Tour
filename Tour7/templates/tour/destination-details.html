@@ -8,10 +8,10 @@
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url("{% static 'assets/img/travel/showcase-8.webp'%}");">
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url("{% static 'assets/img/travel/showcase-8.webp' %}");">
       <div class="container position-relative">
-        <h1>Destination Details</h1>
-        <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
+        <h1>Start Your Adventure</h1>
+        <p>Discover places where even life’s troubles feel lighter—where wonder replaces worry, and every journey brings peace and joy</p>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="{% url 'home' %}">Home</a></li>
@@ -25,26 +25,29 @@
     <section id="travel-destination-details" class="travel-destination-details section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <!-- Hero Section -->
-        <div class="destination-hero" data-aos="fade-up" data-aos-delay="100">
-          <div class="hero-image">
-            <img src="{% static 'assets/img/travel/destination-3.webp' %}" alt="Santorini" class="img-fluid">
-            <div class="hero-overlay">
-              <div class="hero-content">
-                <h1>Santorini, Greece</h1>
-                <p class="hero-tagline">The Crown Jewel of the Aegean Sea</p>
+          
+          <!-- Hero Section -->
+          <div class="destination-hero" data-aos="fade-up" data-aos-delay="100">
+            <div class="hero-image">
+              {% if destination.image %}
+              <img src="{{destination.image.url}}" alt="{{destination.name}}" class="img-fluid">
+              {% endif %}
+              <div class="hero-overlay">
+                <div class="hero-content">
+                  <h1>{{destination.name}}</h1>
+                  <p class="hero-tagline">{{destination.title}}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          
 
         <!-- Overview Section -->
         <div class="destination-overview" data-aos="fade-up" data-aos-delay="200">
           <div class="row">
             <div class="col-lg-8 mx-auto">
-              <h2>Discover the Magic</h2>
-              <p>Perched on volcanic cliffs overlooking the deep blue Aegean Sea, Santorini captivates visitors with its iconic white-washed buildings, stunning sunsets, and rich ancient history. This enchanting Greek island offers a perfect blend of relaxation and adventure, from exploring archaeological sites to savoring world-class wines in dramatic clifftop settings.</p>
+              <h2>{{destination.name}}</h2>
+              <p>{{destination.description }}</p>
             </div>
           </div>
         </div>
@@ -124,6 +127,7 @@
             </div>
           </div>
         </div>
+      
 
         <!-- Tours Available Section -->
         <div class="tours-section" data-aos="fade-up" data-aos-delay="400">
@@ -364,6 +368,7 @@
         </div>
 
       </div>
+       
 
     </section><!-- /Travel Destination Details Section -->
 

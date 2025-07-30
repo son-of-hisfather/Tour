@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Destination
+from .models import Destination, Attraction
 
 class DestinationAdmin(admin.ModelAdmin):
     list_display = [
@@ -14,6 +14,11 @@ class DestinationAdmin(admin.ModelAdmin):
         return ", ".join(tag.name for tag in obj.tags.all())
 #custom admin
 admin.site.register(Destination, DestinationAdmin)
+
+admin.site.register(Attraction)
+list_display = ['tour', 'name', 'image' 'description']
+search_fields = ['name', 'tour__name']
+
     
 
 
