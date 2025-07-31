@@ -51,83 +51,28 @@
             </div>
           </div>
         </div>
-
-        <!-- Attractions Section -->
+      <!-- Attractions Section -->
         <div class="attractions-section" data-aos="fade-up" data-aos-delay="300">
           <div class="section-header">
             <h2>Must-Visit Attractions</h2>
-            <p>Experience the best of what Santorini has to offer</p>
+            {% comment %} <p>Experience the best of what Santorini has to offer</p> {% endcomment %}
           </div>
           <div class="row gy-4">
+            {% for attraction in attractions %}
             <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
               <div class="attraction-item">
                 <div class="attraction-image">
-                  <img src="{% static 'assets/img/travel/destination-3.webp' %}" alt="Oia Village" class="img-fluid">
+                  <img src="{{attraction.image.url}}" alt="{{attraction.name}}" class="img-fluid">
                 </div>
                 <div class="attraction-content">
-                  <h4>Oia Village</h4>
-                  <p>Famous for its breathtaking sunsets and traditional Cycladic architecture with blue-domed churches.</p>
+                  <h4>{{attraction.name}}</h4>
+                  <p>{{attraction.description}}</p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-              <div class="attraction-item">
-                <div class="attraction-image">
-                  <img src="{% static 'assets/img/travel/destination-7.webp' %}" alt="Red Beach" class="img-fluid">
-                </div>
-                <div class="attraction-content">
-                  <h4>Red Beach</h4>
-                  <p>A unique volcanic beach with dramatic red cliffs and crystal-clear waters perfect for swimming.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-              <div class="attraction-item">
-                <div class="attraction-image">
-                  <img src="{% static 'assets/img/travel/destination-12.webp' %}" alt="Akrotiri Ruins" class="img-fluid">
-                </div>
-                <div class="attraction-content">
-                  <h4>Akrotiri Archaeological Site</h4>
-                  <p>Explore the well-preserved ruins of an ancient Minoan settlement frozen in time by volcanic ash.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-              <div class="attraction-item">
-                <div class="attraction-image">
-                  <img src="{% static 'assets/img/travel/destination-15.webp' %}" alt="Fira Town" class="img-fluid">
-                </div>
-                <div class="attraction-content">
-                  <h4>Fira Town</h4>
-                  <p>The vibrant capital offering shopping, dining, and spectacular views of the caldera.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-              <div class="attraction-item">
-                <div class="attraction-image">
-                  <img src="assets/img/travel/destination-18.webp" alt="Wine Tasting" class="img-fluid">
-                </div>
-                <div class="attraction-content">
-                  <h4>Santo Wines Winery</h4>
-                  <p>Sample exceptional local wines while enjoying panoramic views of the volcanic landscape.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-              <div class="attraction-item">
-                <div class="attraction-image">
-                  <img src="assets/img/travel/destination-9.webp" alt="Volcano Tour" class="img-fluid">
-                </div>
-                <div class="attraction-content">
-                  <h4>Nea Kameni Volcano</h4>
-                  <p>Take a boat trip to the active volcano crater and natural hot springs in the caldera.</p>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
-      
 
         <!-- Tours Available Section -->
         <div class="tours-section" data-aos="fade-up" data-aos-delay="400">

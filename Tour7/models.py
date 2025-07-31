@@ -39,6 +39,20 @@ class Attraction(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.tour.name}"
+    
+#Available tours model
+class Experience(models.Model):
+    tour = models.ForeignKey(Destination, related_name='experiences', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='experiences/')
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.0)
+    time = models.CharField(max_length=100, blank=True, null=True)
+    tour_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+
+    def __str__(self):
+        return f"{self.title} - {self.tour.name}"
+
 
     
 

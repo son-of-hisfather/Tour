@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Destination
+from .models import Destination, Attraction
 
 # Create your views here.
 
@@ -25,7 +25,11 @@ def gallery(request):
 
 def destination_details(request, pk):
     destination = get_object_or_404(Destination, pk=pk)
-    return render(request, 'tour/destination-details.html',{'destination': destination})
+    attraction = Attraction.objects.filter(tour=destination)
+    return render(request, 'tour/destination-details.html', {
+        'destination': destination,
+        'attractions': attraction,
+    })
 
 # def category_list(request):
 #     categories = Category.objects.all()  # fetch all category objects
