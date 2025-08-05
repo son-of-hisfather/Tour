@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Destination, Attraction
+from .models import Destination, Attraction, Experience
 
 class DestinationAdmin(admin.ModelAdmin):
     list_display = [
@@ -18,6 +18,10 @@ admin.site.register(Destination, DestinationAdmin)
 admin.site.register(Attraction)
 list_display = ['tour', 'name', 'image' 'description']
 search_fields = ['name', 'tour__name']
+
+admin.site.register(Experience)
+list_display = ['tour', 'image', 'title', 'description', 'rating', 'time', 'tour_price']
+search_fields = ['title', 'tour__name']
 
     
 
