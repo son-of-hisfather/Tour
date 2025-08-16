@@ -6,7 +6,7 @@
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/travel/showcase-8.webp);">
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url('{% static 'assets/img/travel/showcase-8.webp' %}');">
       <div class="container position-relative">
         <h1>Contact</h1>
         <p>"Discover places where even life's troubles feel lighter—where wonder replaces worry, and every journey brings peace and joy."</p>
@@ -23,17 +23,18 @@
     <section id="contact" class="contact section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
+        
         <!-- Contact Info Boxes -->
         <div class="row gy-4 mb-5">
+          {% for contact in contacts %}
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="contact-info-box">
               <div class="icon-box">
                 <i class="bi bi-geo-alt"></i>
               </div>
               <div class="info-content">
-                <h4>Our Address</h4>
-                <p>1842 Maple Avenue, Portland, Oregon 97204</p>
+                <h4>{{contact.name}}</h4>
+                <p>{{contact.address}}</p>
               </div>
             </div>
           </div>
@@ -44,9 +45,9 @@
                 <i class="bi bi-envelope"></i>
               </div>
               <div class="info-content">
-                <h4>Email Address</h4>
-                <p>info@example.com</p>
-                <p>contact@example.com</p>
+                <h4>{{contact.email_name}}</h4>
+                <p>{{contact.email_primary}}</p>
+                <p>{{contact.email_secondary}}</p>
               </div>
             </div>
           </div>
@@ -57,19 +58,20 @@
                 <i class="bi bi-headset"></i>
               </div>
               <div class="info-content">
-                <h4>Hours of Operation</h4>
-                <p>Sunday-Fri: 9 AM - 6 PM</p>
-                <p>Saturday: 9 AM - 4 PM</p>
+                <h4>{{contact.hours_name}}</h4>
+                <p>{{contact.hours}}</p>
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
-
       </div>
 
       <!-- Google Maps (Full Width) -->
       <div class="map-section" data-aos="fade-up" data-aos-delay="200">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        {% for contact in contacts %}
+          {{ contact.google_maps_embed|safe }}
+        {% endfor %}
       </div>
 
       <!-- Contact Form Section (Overlapping) -->
@@ -79,7 +81,8 @@
             <div class="contact-form-wrapper">
               <h2 class="text-center mb-4">Get in Touch</h2>
 
-              <form action="forms/contact.php" method="post" class="php-email-form">
+              <form method="post" action="{% url 'contact' %}">
+                 {% csrf_token %}
                 <div class="row g-3">
                   <div class="col-md-6">
                     <div class="form-group">

@@ -5,7 +5,7 @@
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url("{% static 'assets/img/travel/showcase-8.webp' %}");">
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url('{% static 'assets/img/travel/showcase-8.webp' %}');">
       <div class="container position-relative">
         <h1>About</h1>
         <p>"Discover places where even life's troubles feel lighter—where wonder replaces worry, and every journey brings peace and joy."</p>
@@ -22,27 +22,31 @@
     <section id="travel-about" class="travel-about section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
+        
 
         <div class="row">
           <div class="col-lg-8 mx-auto text-center mb-5">
             <div class="intro-content" data-aos="fade-up" data-aos-delay="200">
-              <h2>Redefining Travel,<br>One Adventure at a Time</h2>
-              <p class="lead">Born from a love of exploration and discovery, we've spent the last decade turning wanderlust into life-changing experiences for adventurous souls around the globe.</p>
+              <h2>Transforming Travel, <br>Into Timeless Experiences</h2>
+              <p class="lead">"Inspired by a passion for discovery, Sonas Tour has spent the past decade transforming wanderlust into bespoke, life-enriching journeys for discerning travelers worldwide."</p>
             </div>
           </div>
         </div>
 
         <div class="row align-items-center mb-5">
+          {% for about in about %}
           <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="300">
             <div class="hero-image">
-              <img src="{% static 'assets/img/travel/showcase-7.webp' %}" class="img-fluid" alt="Travel Adventure">
+              {% if about.image %}
+                <img src="{{ about.image.url }}" class="img-fluid" alt="Travel Adventure">
+              {% endif %}
               <div class="floating-stats">
                 <div class="stat-item">
-                  <span class="number">50+</span>
+                  <span class="number">{{about.countries_count}}K+</span>
                   <span class="label">Countries</span>
                 </div>
                 <div class="stat-item">
-                  <span class="number">15K</span>
+                  <span class="number">{{about.travelers_count}}K+</span>
                   <span class="label">Happy Travelers</span>
                 </div>
               </div>
@@ -53,25 +57,25 @@
             <div class="story-content">
               <div class="story-badge">
                 <i class="bi bi-compass"></i>
-                <span>Our Story</span>
+                <span>{{about.story_badge}}</span>
               </div>
-              <h3>Where Passion Meets Purpose</h3>
-              <p>What started as weekend camping trips among college friends has evolved into a global network of travel enthusiasts dedicated to creating extraordinary journeys. We believe travel isn't just about seeing new places – it's about connecting with cultures, supporting communities, and discovering parts of yourself you never knew existed.</p>
-              <p>Every expedition we craft is infused with respect for local traditions and a commitment to leaving places better than we found them. Our team of cultural ambassadors and adventure specialists work hand-in-hand with indigenous guides to offer you authentic experiences that most tourists never see.</p>
+              <h3>{{about.story_title}}</h3>
+              <p>{{about.story_text}}</p>
 
               <div class="mission-box">
                 <div class="mission-icon">
                   <i class="bi bi-globe-americas"></i>
                 </div>
                 <div class="mission-text">
-                  <h4>Our Vision</h4>
-                  <p>"To make the world more connected and compassionate, one meaningful journey at a time."</p>
+                  <h4>{{about.vision_title}}</h4>
+                  <p>{{about.vision_text}}</p>
                 </div>
               </div>
             </div>
           </div>
+         {% endfor %}
         </div>
-
+        
         <div class="row">
           <div class="col-lg-12">
             <div class="features-grid" data-aos="fade-up" data-aos-delay="200">
@@ -238,15 +242,14 @@
                   <h3>Your Next Adventure Awaits</h3>
                   <p>Join thousands of travelers who've discovered the difference authentic, responsible travel makes.</p>
                   <div class="cta-buttons">
-                    <a href="destinations.html" class="btn btn-primary me-3">Explore Destinations</a>
-                    <a href="contact.html" class="btn btn-outline">Chat with an Expert</a>
+                    <a href="{% url 'destinations' %}" class="btn btn-primary me-3">Explore Destinations</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline">Chat with an Expert</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
 
     </section><!-- /Travel About Section -->
