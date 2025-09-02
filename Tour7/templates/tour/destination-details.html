@@ -112,13 +112,15 @@
             <p>Interactive map with key attractions</p>
           </div>
           <div class="map-container">
+            
             <div class="map-embed">
-              {% if destination.loaction_map %}
-              <iframe src="{{destination.location_map}}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              {% else %}
+              {% if destination.location_map %}
+              <iframe src="{{destination.location_map}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+               {% else %}
                 <p>No map available for this destination.</p>
-              {% endif %}
+              {% endif %} 
             </div>
+            
             {% comment %} <div class="map-points">
               <div class="point-item">
                 <i class="bi bi-geo-alt-fill"></i>
@@ -144,7 +146,7 @@
         <div class="practical-info" data-aos="fade-up" data-aos-delay="600">
           <div class="section-header">
             <h2>Essential Travel Information</h2>
-            <p>Everything you need to know for your Santorini adventure</p>
+            {% comment %} <p>Everything you need to know for your Santorini adventure</p> {% endcomment %}
           </div>
           <div class="row gy-4">
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">

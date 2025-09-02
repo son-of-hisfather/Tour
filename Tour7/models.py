@@ -3,16 +3,11 @@ from taggit.managers import TaggableManager
 
 # Create your models here.
 CATEGORY_CHOICES = (
-    # ('Tropical', 'Tropical'),
-    # ('Mountain', 'Alpine'),
     ('Urban', 'Cityscapes'),
     ('Historical', 'Heritage'),
     ('Coastal', 'Seaside'),
 )
 
-
-    # def __str__(self):
-    #     return self.name
 
 #Destination model
 class Destination(models.Model):
@@ -23,7 +18,7 @@ class Destination(models.Model):
     tours_available = models.TextField()
     starting_price = models.IntegerField(default=0)
     tags = TaggableManager()
-    location_map = models.URLField(help_text="Google Maps URL", blank=True)
+    location_map = models.URLField(max_length=1000, help_text="Google Maps URL", blank=True)
     category = models.CharField(max_length=300, choices=CATEGORY_CHOICES, default='Coastal')
     country = models.CharField(max_length=100, default="") 
      
@@ -102,6 +97,27 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"Message from {self.name} - {self.subject}"
+    
+
+class Booking(models.Model):
+    TOUR_TYPES = [
+        ('adventure', 'Adventure'),
+        ('cultural', 'Cultural'),
+        ('relaxation', 'Relaxation'),
+        ('family', 'Family'),
+        ('luxury', 'Luxury'),
+    ]
+
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    check_in_date = models.DateField()
+    check_out_date = models.DateField()
+    adults = models.PositiveIntegerField(default=1)
+    children = models.PositiveIntegerField(default=0)
+    tour_type = models.CharField(max_length=100, choices=TOUR_TYPES)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Booking for {self.destination.name} from {self.check_in_date} to {self.check_out_date}"
 
 
 

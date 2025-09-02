@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Destination, Attraction, Experience, About, Newsletter, Contact, ContactMessage
+from .models import Destination, Attraction, Experience, About, Newsletter, Contact, ContactMessage, Booking
 
 class DestinationAdmin(admin.ModelAdmin):
     list_display = [
@@ -38,6 +38,11 @@ search_fields = ['name', 'email_primary', 'email_secondary']
 admin.site.register(ContactMessage)
 list_display = ['name', 'email', 'subject', 'sent_at']
 search_fields = ['name', 'email', 'subject']
+
+admin.site.register(Booking)
+list_display = ['destination', 'check_in_date', 'check_out_date', 'adults', 'children', 'tour_type', 'created_at']  
+search_fields = ['destination__name', 'tour_type']
+
 
 
 

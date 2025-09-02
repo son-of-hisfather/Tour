@@ -211,6 +211,19 @@
   <!-- Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
 
+  <script>
+  // Auto hide success message after 3 seconds
+  setTimeout(function() {
+    let msg = document.getElementById("message-container");
+    if (msg) {
+      msg.style.transition = "opacity 0.5s ease";
+      msg.style.opacity = "0";
+      setTimeout(() => msg.remove(), 500); // remove completely after fade out
+    }
+  }, 3000); // 3000ms = 3 seconds
+</script>
+
+
 </body>
 
 </html>
