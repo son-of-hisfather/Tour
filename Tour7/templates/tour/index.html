@@ -127,20 +127,19 @@
         <div class="row align-items-center mb-5">
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
             <div class="content">
-              <h3>Explore the World with Confidence</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h3>{{home_about.title}}</h3>
+              <p>{{home_about.description}}</p>
               <div class="stats-row">
                 <div class="stat-item">
-                  <span data-purecounter-start="0" data-purecounter-end="1200" data-purecounter-duration="2" class="purecounter">0</span>
+                  <span data-purecounter-start="0" data-purecounter-end="{{home_about.travelers}}" data-purecounter-duration="2" class="purecounter">0</span>
                   <div class="stat-label">Happy Travelers</div>
                 </div>
                 <div class="stat-item">
-                  <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="2" class="purecounter">0</span>
+                  <span data-purecounter-start="0" data-purecounter-end="{{home_about.countries}}" data-purecounter-duration="2" class="purecounter">0</span>
                   <div class="stat-label">Countries Covered</div>
                 </div>
                 <div class="stat-item">
-                  <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="2" class="purecounter">0</span>
+                  <span data-purecounter-start="0" data-purecounter-end="{{home_about.years}}" data-purecounter-duration="2" class="purecounter">0</span>
                   <div class="stat-label">Years Experience</div>
                 </div>
               </div>
@@ -148,7 +147,7 @@
           </div>
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="about-image">
-              <img src="{% static 'assets/img/travel/showcase-8.webp' %}" alt="Travel Experience" class="img-fluid rounded-4">
+              <img src="{{home_about.image.url}}" alt="Travel Experience" class="img-fluid rounded-4">
               <div class="experience-badge">
                 <div class="experience-number">15+</div>
                 <div class="experience-text">Years of Excellence</div>
@@ -173,7 +172,7 @@
                   <i class="bi bi-people-fill"></i>
                 </div>
                 <h4>Local Experts</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.</p>
+                <p>Discover authentic experiences guided by local experts who share their culture, history, and hidden gems with you.</p>
               </div>
             </div>
 
@@ -183,7 +182,7 @@
                   <i class="bi bi-shield-check"></i>
                 </div>
                 <h4>Safe &amp; Secure</h4>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
+                <p>Travel with peace of mind your safety is our top priority, from booking to your journey's end.</p>
               </div>
             </div>
 
@@ -193,7 +192,7 @@
                   <i class="bi bi-cash"></i>
                 </div>
                 <h4>Best Prices</h4>
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit.</p>
+                <p>Enjoy unforgettable adventures at unbeatable prices, without compromising on quality.</p>
               </div>
             </div>
 
@@ -203,7 +202,7 @@
                   <i class="bi bi-headset"></i>
                 </div>
                 <h4>24/7 Support</h4>
-                <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam nisi.</p>
+                <p>Our dedicated support team is available around the clock to assist you whenever you need.</p>
               </div>
             </div>
 
@@ -213,7 +212,7 @@
                   <i class="bi bi-geo-alt-fill"></i>
                 </div>
                 <h4>Global Destinations</h4>
-                <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae.</p>
+                <p>Explore the world with us our tours cover iconic cities and hidden gems across the globe.</p>
               </div>
             </div>
 
@@ -223,7 +222,7 @@
                   <i class="bi bi-star-fill"></i>
                 </div>
                 <h4>Premium Experience</h4>
-                <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim.</p>
+                <p>From luxury stays to curated cultural activities, we deliver experiences that go beyond the ordinary.</p>
               </div>
             </div>
           </div><!-- End Features Grid -->

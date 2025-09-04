@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from .models import Destination, Attraction, Experience, About, Newsletter, Contact, ContactMessage, Booking
+from .models import Destination, Attraction, Experience, About, Newsletter, Contact, ContactMessage, Booking, HomeAbout
 
 # Create your views here.
-
 def home(request):
     if request.method == 'POST':
         destination_id = request.POST.get("destination")
@@ -28,8 +27,17 @@ def home(request):
         messages.success(request, 'Booking has been successfully created!')
         return redirect('home')
 
-    destinations = Destination.objects.all()  # fetch available destinations
-    return render(request, 'tour/index.html', {"destinations": destinations})
+    # if not POST, fetch data for home page
+    destinations = Destination.objects.all()
+    home_about = HomeAbout.objects.first()  # load about section
+
+    context = {
+        "destinations": destinations,
+        "home_about": home_about,
+    }
+
+    return render(request, 'tour/index.html', context)
+
 
 def about(request):
     about = About.objects.all()  
