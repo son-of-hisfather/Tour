@@ -81,13 +81,14 @@ def gallery(request):
     return render(request, 'tour/gallery.html')
 
 def destination_details(request, pk):
+    # destinations = Destination.objects.all()
     destination = get_object_or_404(Destination, pk=pk)
     attraction = Attraction.objects.filter(tour=destination)
     experience = Experience.objects.filter(tour=destination)
     return render(request, 'tour/destination-details.html', {
         'destination': destination,
         'attractions': attraction,
-        'experiences': experience
+        'experiences': experience,
     })
 
 def subscriber(request):
