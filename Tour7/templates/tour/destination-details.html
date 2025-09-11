@@ -146,16 +146,17 @@
         <div class="practical-info" data-aos="fade-up" data-aos-delay="600">
           <div class="section-header">
             <h2>Essential Travel Information</h2>
-            {% comment %} <p>Everything you need to know for your Santorini adventure</p> {% endcomment %}
+            <p>Everything you need to know before you travel</p>
           </div>
           <div class="row gy-4">
+            {% for destination in destinations %}
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
               <div class="info-item">
                 <div class="info-icon">
                   <i class="bi bi-calendar-event"></i>
                 </div>
                 <h4>Best Time to Visit</h4>
-                <p>April to November for warm weather. Peak season: June-August. Shoulder seasons offer fewer crowds and lower prices.</p>
+                <p>{{ destination.visit }}</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
@@ -164,7 +165,7 @@
                   <i class="bi bi-thermometer-sun"></i>
                 </div>
                 <h4>Weather &amp; Climate</h4>
-                <p>Mediterranean climate with hot, dry summers (75-85°F) and mild winters. Sea breeze provides natural cooling.</p>
+                <p>{{ destination.weather }}</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
@@ -173,7 +174,7 @@
                   <i class="bi bi-currency-euro"></i>
                 </div>
                 <h4>Currency &amp; Language</h4>
-                <p>Euro (EUR) is the official currency. Greek is the primary language, though English is widely spoken in tourist areas.</p>
+                <p>{{ destination.currency }}</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
@@ -182,10 +183,12 @@
                   <i class="bi bi-passport"></i>
                 </div>
                 <h4>Visa Requirements</h4>
-                <p>EU citizens need only an ID card. US, Canada, Australia citizens need valid passport for stays up to 90 days.</p>
+                <p>{{ destination.visa }}</p>
               </div>
             </div>
+            {% endfor %}
           </div>
+
           <div class="travel-tips" data-aos="fade-up" data-aos-delay="500">
             <h3>Local Tips &amp; Cultural Insights</h3>
             <div class="row">
@@ -193,19 +196,20 @@
                 <ul class="tips-list">
                   <li><i class="bi bi-check-circle"></i> Book sunset dinner reservations well in advance</li>
                   <li><i class="bi bi-check-circle"></i> Wear comfortable walking shoes for cobblestone streets</li>
-                  <li><i class="bi bi-check-circle"></i> Carry sun protection - the Aegean sun can be intense</li>
+                  <li><i class="bi bi-check-circle"></i> Carry sun protection - the sun can be intense</li>
                 </ul>
               </div>
               <div class="col-md-6">
                 <ul class="tips-list">
                   <li><i class="bi bi-check-circle"></i> Respect local customs and dress codes at religious sites</li>
-                  <li><i class="bi bi-check-circle"></i> Try local specialties: fava beans, cherry tomatoes, and Assyrtiko wine</li>
-                  <li><i class="bi bi-check-circle"></i> Use public transportation or rent ATVs for island exploration</li>
+                  <li><i class="bi bi-check-circle"></i> Try local specialties and traditional dishes</li>
+                  <li><i class="bi bi-check-circle"></i> Use public transportation or rent ATVs for exploration</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
+
 
         <!-- Photo Gallery Section -->
         <div class="gallery-section" data-aos="fade-up" data-aos-delay="700">

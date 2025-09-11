@@ -21,6 +21,10 @@ class Destination(models.Model):
     location_map = models.URLField(max_length=1000, help_text="Google Maps URL", blank=True)
     category = models.CharField(max_length=300, choices=CATEGORY_CHOICES, default='Coastal')
     country = models.CharField(max_length=100, default="") 
+    visit = models.CharField(max_length=200)
+    weather = models.CharField(max_length=200)
+    currency = models.CharField(max_length=200)
+    visa = models.CharField(max_length=200)
      
     
     def __str__(self):
@@ -132,5 +136,14 @@ class HomeAbout(models.Model):
 
     def __str__(self):
         return f"Home About Section - {self.title}"
+    
+class Customer(models.Model):
+    feedback = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='customers/')
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 

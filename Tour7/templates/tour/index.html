@@ -24,7 +24,7 @@
               <p class="hero-subtitle">"Experience the art of effortless travel with Sonas Tour. From exclusive getaways to serene escapes, we curate luxurious holiday experiences designed for comfort, elegance, and unforgettable memories — all without the stress of planning."</p>
               <div class="hero-buttons">
                 <a href="{% url 'destinations' %}" class="btn btn-primary me-3">Start Exploring</a>
-                <a href="{% url 'tours' %}" class="btn btn-outline">Browse Tours</a>
+                {% comment %} <a href="{% url 'tours' %}" class="btn btn-outline">Browse Tours</a> {% endcomment %}
               </div>
             </div>
           </div>
@@ -161,7 +161,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8 text-center mb-5" data-aos="fade-up" data-aos-delay="100">
               <h3>Why Choose Us for Your Next Adventure</h3>
-              <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+              <p>We go beyond ordinary travel crafting journeys that blend adventure, culture, and comfort. Every trip is designed to give you authentic experiences, lasting memories, and peace of mind from start to finish</p>
             </div>
           </div>
 
@@ -243,108 +243,75 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="featured-destination">
-              <div class="destination-overlay">
-                <img src="{% static 'assets/img/travel/destination-3.webp' %}" alt="Tropical Paradise" class="img-fluid">
-                <div class="destination-info">
-                  <span class="destination-tag">Popular Choice</span>
-                  <h3>Tropical Paradise</h3>
-                  <p class="location"><i class="bi bi-geo-alt-fill"></i> Maldives</p>
-                  <p class="description">Pristine beaches, crystal-clear waters, and luxury overwater villas await in this tropical paradise destination.</p>
-                  <div class="destination-meta">
-                    <div class="tours-count">
-                      <i class="bi bi-collection"></i>
-                      <span>22 Packages</span>
-                    </div>
-                    <div class="rating">
-                      <i class="bi bi-star-fill"></i>
-                      <span>4.9 (412)</span>
-                    </div>
-                  </div>
-                  <div class="price-info">
-                    <span class="starting-from">Starting from</span>
-                    <span class="amount">$2,150</span>
-                  </div>
-                  <a href="destination-details.html" class="explore-btn">
-                    <span>Explore Now</span>
-                    <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
+       <div class="row">
+  <!-- Left side: Main Featured Destination -->
+  <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+    {% if destinations %}
+    {% with main_dest=destinations.0 %}
+    <div class="featured-destination">
+      <div class="destination-overlay">
+        <img src="{{ main_dest.image.url }}" alt="{{ main_dest.name }}" class="img-fluid">
+        <div class="destination-info">
+          <span class="destination-tag">Popular Choice</span>
+          <h3>{{ main_dest.title }}</h3>
+          <p class="location"><i class="bi bi-geo-alt-fill"></i> {{ main_dest.name }}</p>
+          <p class="description">{{ main_dest.description|truncatewords:25 }}</p>
+          <div class="destination-meta">
+            <div class="tours-count">
+              <i class="bi bi-collection"></i>
+              <span>{{ main_dest.tours_available }} Packages</span>
+            </div>
+            <div class="rating">
+              <i class="bi bi-star-fill"></i>
+              <span>4.9 (412)</span>
             </div>
           </div>
-
-          <div class="col-lg-6">
-            <div class="row g-3">
-
-              <div class="col-12" data-aos="fade-left" data-aos-delay="300">
-                <div class="compact-destination">
-                  <div class="destination-image">
-                    <img src="{% static 'assets/img/travel/destination-7.webp' %}" alt="Mountain Adventure" class="img-fluid">
-                    <div class="badge-offer">Best Value</div>
-                  </div>
-                  <div class="destination-details">
-                    <h4>Mountain Adventure</h4>
-                    <p class="location"><i class="bi bi-geo-alt"></i> Nepal</p>
-                    <p class="brief">Breathtaking Himalayan peaks and ancient Buddhist temples create an unforgettable spiritual journey.</p>
-                    <div class="stats-row">
-                      <span class="tour-count"><i class="bi bi-calendar-check"></i> 16 Tours</span>
-                      <span class="rating"><i class="bi bi-star-fill"></i> 4.8</span>
-                      <span class="price">from $1,420</span>
-                    </div>
-                    <a href="destination-details.html" class="quick-link">View Details <i class="bi bi-chevron-right"></i></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12" data-aos="fade-left" data-aos-delay="400">
-                <div class="compact-destination">
-                  <div class="destination-image">
-                    <img src="{% static 'assets/img/travel/destination-11.webp' %}" alt="Cultural Heritage" class="img-fluid">
-                  </div>
-                  <div class="destination-details">
-                    <h4>Cultural Heritage</h4>
-                    <p class="location"><i class="bi bi-geo-alt"></i> Peru</p>
-                    <p class="brief">Discover ancient civilizations, colorful markets, and archaeological wonders in the heart of South America.</p>
-                    <div class="stats-row">
-                      <span class="tour-count"><i class="bi bi-calendar-check"></i> 9 Expeditions</span>
-                      <span class="rating"><i class="bi bi-star-fill"></i> 4.7</span>
-                      <span class="price">from $980</span>
-                    </div>
-                    <a href="destination-details.html" class="quick-link">View Details <i class="bi bi-chevron-right"></i></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12" data-aos="fade-left" data-aos-delay="500">
-                <div class="compact-destination">
-                  <div class="destination-image">
-                    <img src="{% static 'assets/img/travel/destination-16.webp' %}" alt="Safari Experience" class="img-fluid">
-                    <div class="badge-offer limited">Limited Spots</div>
-                  </div>
-                  <div class="destination-details">
-                    <h4>Safari Experience</h4>
-                    <p class="location"><i class="bi bi-geo-alt"></i> Kenya</p>
-                    <p class="brief">Witness the Big Five and experience the great migration in Africa's most spectacular wildlife reserves.</p>
-                    <div class="stats-row">
-                      <span class="tour-count"><i class="bi bi-calendar-check"></i> 11 Safaris</span>
-                      <span class="rating"><i class="bi bi-star-fill"></i> 4.9</span>
-                      <span class="price">from $2,750</span>
-                    </div>
-                    <a href="destination-details.html" class="quick-link">View Details <i class="bi bi-chevron-right"></i></a>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+          <div class="price-info">
+            <span class="starting-from">Starting from</span>
+            <span class="amount">${{ main_dest.starting_price }}</span>
           </div>
-
+          <a href="{% url 'destination_details' main_dest.id %}" class="explore-btn">
+            <span>Explore Now</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
-
       </div>
+    </div>
+    {% endwith %}
+    {% endif %}
+  </div>
+
+  <!-- Right side: Compact Destinations -->
+  <div class="col-lg-6">
+    <div class="row g-3">
+      {% for destination in destinations|slice:"1:4" %}
+      <div class="col-12" data-aos="fade-left" data-aos-delay="{{ forloop.counter|add:2 }}00">
+        <div class="compact-destination">
+          <div class="destination-image">
+            <img src="{{ destination.image.url }}" alt="{{ destination.name }}" class="img-fluid">
+            <div class="badge-offer {% if forloop.counter == 1 %}best{% elif forloop.counter == 2 %}cultural{% else %}limited{% endif %}">
+              {% if forloop.counter == 1 %}Best Value{% elif forloop.counter == 2 %}Top Pick{% else %}Limited Spots{% endif %}
+            </div>
+          </div>
+          <div class="destination-details">
+            <h4>{{ destination.title }}</h4>
+            <p class="location"><i class="bi bi-geo-alt"></i> {{ destination.name }}</p>
+            <p class="brief">{{ destination.description|truncatewords:15 }}</p>
+            <div class="stats-row">
+              <span class="tour-count"><i class="bi bi-calendar-check"></i> {{ destination.tours_available }}</span>
+              <span class="rating"><i class="bi bi-star-fill"></i> 4.8</span>
+              <span class="price">from ${{ destination.starting_price }}</span>
+            </div>
+            <a href="{% url 'destination_details' destination.id %}" class="quick-link">
+              View Details <i class="bi bi-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 
     </section><!-- /Featured Destinations Section -->
 
@@ -613,70 +580,21 @@
           </script>
           <div class="swiper-wrapper">
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="{% static 'assets/img/person/person-m-9.webp' %}" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div><!-- End testimonial item -->
 
+            {% for customer in customers %}
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
+                  <span>{{ customer.feedback }}</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
-                <img src="{% static 'assets/img/person/person-f-5.webp' %}" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
+                <img src="{{ customer.image.url }}" class="testimonial-img" alt="{{ customer.name}}">
+                <h3>{{ customer.name }}</h3>
+                <h4>{{ customer.designation }}</h4>
               </div>
             </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="{% static 'assets/img/person/person-f-12.webp' %}" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="{% static 'assets/img/person/person-m-12.webp' %}" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="{% static 'assets/img/person/person-m-13.webp' %}" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div><!-- End testimonial item -->
+            {% endfor %}
 
           </div>
           <div class="swiper-pagination"></div>
@@ -701,11 +619,11 @@
 
             <div class="action-section">
               <div class="main-actions">
-                <a href="destinations.html" class="btn btn-explore">
+                <a href="{% url 'destinations' %}" class="btn btn-explore">
                   <i class="bi bi-compass"></i>
                   Explore Now
                 </a>
-                <a href="deals.html" class="btn btn-deals">
+                <a href="{% url 'contact' %}" class="btn btn-deals">
                   <i class="bi bi-percent"></i>
                   View Deals
                 </a>
@@ -715,7 +633,7 @@
                 <span class="contact-label">Need help choosing?</span>
                 <a href="tel:+1555123456" class="contact-link">
                   <i class="bi bi-telephone"></i>
-                  Call +1 (555) 123-456
+                  Call +234 810 433  9629
                 </a>
               </div>
             </div>
@@ -821,9 +739,4 @@
     </section><!-- /Call To Action Section -->
 
   </main>
-
- 
-</body>
-
-</html>
 {% endblock %}

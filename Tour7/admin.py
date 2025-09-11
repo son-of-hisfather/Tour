@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Destination, Attraction, Experience, About, Newsletter, Contact, ContactMessage, Booking, HomeAbout
+from .models import Destination, Attraction, Experience, About, Newsletter, Contact, ContactMessage, Booking, HomeAbout, Customer
 
 class DestinationAdmin(admin.ModelAdmin):
     list_display = [
         'name', 'title', 'starting_price', 'description',
-        'tours_available', 'location_map', 'image', 'category', 'display_tags'
+        'tours_available', 'location_map', 'image', 'category', 'display_tags', 'country', 'visit', 'weather', 'currency', 'visa' 
     ]
     search_fields = ['name', 'title']
     list_filter = ['category', 'starting_price']
@@ -46,6 +46,11 @@ search_fields = ['destination__name', 'tour_type']
 admin.site.register(HomeAbout)
 list_display = ['title', 'description', 'travelers', 'countries', 'years', 'image', 'badge_number', 'badge_text']
 search_fields = ['title'] 
+
+admin.site.register(Customer)
+list_display = ['name', 'designation', 'feedback', 'image']
+search_fields = ['name', 'designation']
+
 
 
 
