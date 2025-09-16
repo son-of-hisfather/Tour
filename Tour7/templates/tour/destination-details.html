@@ -208,7 +208,7 @@
           </div>
         </div>
 
-
+{% comment %} 
         <!-- Photo Gallery Section -->
         <div class="gallery-section" data-aos="fade-up" data-aos-delay="700">
           <div class="section-header">
@@ -268,17 +268,17 @@
             </div>
             <div class="swiper-pagination"></div>
           </div>
-        </div>
+        </div> {% endcomment %}
 
         <!-- Call to Action Section -->
         <div class="cta-section" data-aos="fade-up" data-aos-delay="800">
           <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-              <h2>Ready to Experience Santorini?</h2>
+              {% comment %} <h2>Ready to Experience Santorini?</h2> {% endcomment %}
               <p>Let our travel experts help you create the perfect Santorini itinerary tailored to your interests and budget.</p>
               <div class="cta-buttons">
-                <a href="#" class="btn btn-primary">View All Tours</a>
-                <a href="#" class="btn btn-outline">Contact Travel Expert</a>
+                <a href="{% url 'destinations' %}" class="btn btn-primary">View All Tours</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline">Contact Travel Expert</a>
               </div>
             </div>
           </div>
