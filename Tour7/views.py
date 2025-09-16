@@ -78,7 +78,8 @@ def tours(request):
     return render(request, 'tour/tours.html')
 
 def gallery(request):
-    return render(request, 'tour/gallery.html')
+    images = Destination.objects.all()  # Assuming images are part of Destination model
+    return render(request, 'tour/gallery.html', {'images': images})
 
 def destination_details(request, pk):
     # destinations = Destination.objects.all()
